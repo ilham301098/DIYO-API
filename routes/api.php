@@ -25,6 +25,7 @@ Route::middleware('api_key')->group(function() {
     Route::get('/inventories', [InventoryController::class, 'list']);
     Route::get('/products', [ProductController::class, 'list']);
     Route::get('/sales', [SalesController::class, 'list']);
+    Route::get('/sales/{sales_id}', [SalesController::class, 'detail']);
 
 });
 
