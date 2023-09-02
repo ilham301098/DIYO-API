@@ -21,6 +21,8 @@ class ApiKeyMiddleware
             if($validApi->status=='deactive'){
                 return response(['message'=>'Unauthorized Access'], 400);
             } 
+
+            $request->merge(['client_code' => $validApi->client_code]);
             return $next($request);
         }
 

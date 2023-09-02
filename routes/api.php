@@ -3,6 +3,10 @@
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
+use App\Http\Controllers\InventoryController;
+use App\Http\Controllers\ProductController;
+use App\Http\Controllers\SalesController;
+
 /*
 |--------------------------------------------------------------------------
 | API Routes
@@ -14,14 +18,13 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
-    return $request->user();
-});
 
 
 Route::middleware('api_key')->group(function() {
-    Route::get('/inventories', function () {
-        return 'tes';
-    });
+
+    Route::get('/inventories', [InventoryController::class, 'list']);
+    Route::get('/products', [ProductController::class, 'list']);
+    Route::get('/sales', [SalesController::class, 'list']);
+
 });
 
